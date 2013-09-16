@@ -1,1 +1,1 @@
-!function(n,r){return n+r}();
+!function(n,r){return n+r}(),function(n,r){return n+r}();
