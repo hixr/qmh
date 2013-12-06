@@ -1,1 +1,1 @@
-!function(n,r){return n+r}();
+document.body.style.backgroundColor="GhostWhite";

@@ -1,6 +1,7 @@
 ~*.*
 *.bat
 app.js
+*.user.js
 
 #################
 ## Eclipse
