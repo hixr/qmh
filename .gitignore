@@ -1,6 +1,6 @@
 ~*.*
 *.bat
-/local
+local/
 
 #################
 ## Eclipse
