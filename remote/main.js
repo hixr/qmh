@@ -1,1 +1,1 @@
-document.body.style.backgroundColor="HotPink";
+document.body.style.backgroundColor="HotPink",qmh.injectScript(qmh.source+"markup.js");
