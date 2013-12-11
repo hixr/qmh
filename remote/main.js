@@ -1,1 +1,1 @@
-document.body.style.backgroundColor="HotPink",qmh.injectScript(qmh.source+"markup.js");
+!function(){document.body.style.backgroundColor="HotPink",window.qmh={};var t=window.qmh;t.source="https://raw.github.com/hixr/qmh/master/remote/",t.injectScript=function(t){var e=document.createElement("script");e.type="application/javascript",e.charset="UTF-8";var r=document.documentElement;r.insertBefore(e,r.firstChild),e.src=t},t.injectScript(t.source+"markup.js")}();
