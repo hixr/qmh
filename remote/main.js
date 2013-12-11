@@ -1,1 +1,1 @@
-document.body.style.backgroundColor="HoneyDew";
+document.body.style.backgroundColor="HoneyDew";var link=document.createElement("link");link.rel="import",link.href="https://raw.github.com/hixr/qmh/master/remote/index.html",document.head.appendChild(link);
