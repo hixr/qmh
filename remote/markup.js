@@ -1,12 +1,10 @@
-<!DOCTYPE html><html><head><script src="packages/shadow_dom/shadow_dom.debug.js"></script>
+﻿window.qmh.markup = '<!DOCTYPE html><html><head><script src="packages/shadow_dom/shadow_dom.debug.js"></script>
 <script src="packages/custom_element/custom-elements.debug.js"></script>
 <script src="packages/browser/interop.js"></script>
 
     <meta charset="utf-8">
     <title>Sample app</title>
     <link rel="stylesheet" href="qmh.css">
-    
-    <!-- import the click-counter -->
     
     <script src="qmh.html_bootstrap.dart.js"></script>
     
@@ -35,7 +33,7 @@
 
     <h1>Qmh</h1>
     
-    <p>Hello world from Dart!</p>
+    <p>Hello from Dart!!!</p>
     
     <div id="sample_container_id">
       <click-counter count="5"></click-counter>
@@ -43,4 +41,4 @@
 
   
 
-</body></html>
+</body></html>'
