@@ -1,4 +1,4 @@
-﻿document.getElementsByClassName('listing')[0].addEventListener('click', handler);
+document.getElementsByClassName('listing')[0].addEventListener('click', handler);
 function handler(e) {
 	
 	var node = e.target;
