@@ -1,6 +1,9 @@
 if (/index\.php\?c=orders&m=l&st=unassigned&budget=0&fcity=0&ftime=2&q=50/.test(window.location.href)) {
 	processList();
 };
+if (/index\.php\?c=orders&m=l&st=forcheck&budget=0&fcity=1&ftime=all&q=50/.test(window.location.href)) {
+	processList();
+}
 if (/index\.php\?c=orders&m=order&id=/.test(window.location.href)) {
 	processOrder();
 };
