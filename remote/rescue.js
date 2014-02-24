@@ -137,6 +137,7 @@ function formatOrder() {
 	sendSMSForm.submit();
 	setTimeout(archivateForm.submit, 200);
 	setTimeout(exit, 5000);
+	return false;
     };
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
     var details = document.getElementsByClassName('details')[0];
