@@ -1,6 +1,12 @@
 ~*.*
 *.bat
 local/
+*.*~
+*.*#
+.sass
+.scss
+.haml
+.md
 
 #################
 ## Eclipse
