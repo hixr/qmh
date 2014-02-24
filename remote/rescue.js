@@ -142,7 +142,7 @@ function formatOrder() {
     var parent = details.tBodies[0];
     var elem = parent.children[0].children[1];
     elem.insertBefore(archivateForm, elem.children[0]);
-    elem.insertBefore(archivateSMSInput, elem.children[0]);
+    elem.insertBefore(archivateSMSButton, elem.children[0]);
     var rows = details.getElementsByTagName('tr');
     for (var i=0, len=rows.length; i<len; i++) {
 	elem = rows[i];
