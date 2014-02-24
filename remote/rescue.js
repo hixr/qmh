@@ -131,7 +131,8 @@ function formatOrder() {
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
     var archivateInput = document.querySelector('[value="В архив!"]');
     var details = document.getElementsByClassName('details')[0];
-    if (archivateInput) {
+    var parent = details.tBodies[0];
+  if (archivateInput) {
 	archivateInput.value = 'Архив';
 	archivateInput.style.display = 'inline-block';
 	var archivateSMSButton= document.createElement('button') ;
@@ -141,7 +142,6 @@ function formatOrder() {
 	    setTimeout(archivateForm.submit, 200);
 	    setTimeout(exit, 500);
 	};
-	var parent = details.tBodies[0];
 	var elem = parent.children[0].children[1];
 	elem.insertBefore(archivateForm, elem.children[0]);
 	elem.insertBefore(archivateSMSButton, elem.children[0]);
