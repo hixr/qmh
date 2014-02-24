@@ -8,6 +8,8 @@ if (/index\.php\?c=orders&m=order&id=/.test(window.location.href)) {
     processOrder();
 };
 
+function exit() {window.open("","_self"); window.close()};
+
 function processList() {
     document.getElementsByClassName('listing')[0].addEventListener('click', handler);
     
@@ -126,11 +128,21 @@ function getDayBefore(days) {
 
 function formatOrder() {
     var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
+    var archivateInput = document.querySelector('[value="В архив!"]');
+    archivateInput.value = "Архив";
+    var archivateSMSButton = document.createElement('button');
+    archivateSMSButton.textContent = "Архив+SMS";
+    archivateSMSButton.onclick = function() {
+	sendSMSForm.submit();
+	archivateForm.submit();
+	setTimeout(exit, 500);
+    };
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
     var details = document.getElementsByClassName('details')[0];
     var parent = details.tBodies[0];
     var elem = parent.children[0].children[1];
     elem.insertBefore(archivateForm, elem.children[0]);
+    elem.insertBefore(archivateSMSButton, elem.children[0]);
     var rows = details.getElementsByTagName('tr');
     for (var i=0, len=rows.length; i<len; i++) {
 	elem = rows[i];
