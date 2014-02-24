@@ -125,14 +125,18 @@ function getDayBefore(days) {
 };
 
 function formatOrder() {
+    var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
+    var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
     var details = document.getElementsByClassName('details')[0];
+    var parent = details.tBodies[0];
+    var elem = parent.children[0].children[1];
+    elem.insertBefore(archivateForm, elem.children[0]);
     var rows = details.getElementsByTagName('tr');
     for (var i=0, len=rows.length; i<len; i++) {
-	var elem = rows[i];
+	elem = rows[i];
 	var name = elem.children[0].textContent;
 	var content = elem.children[1];
 	if (name == 'Заявка создана:') {
-	    var parent = details.tBodies[0];
 	    parent.insertBefore(elem, parent.children[0]);
 	    var createdDate = strToDate(content.textContent);
 	    if (createdDate > getDayBefore(5)) {
@@ -141,3 +145,4 @@ function formatOrder() {
 	};
     };
 };
+
