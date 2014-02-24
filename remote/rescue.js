@@ -128,22 +128,24 @@ function getDayBefore(days) {
 
 function formatOrder() {
     var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
-    var archivateInput = document.querySelector('[value="В архив!"]');
-    archivateInput.value = 'Архив';
-    archivateInput.style.display = 'inline-block';
-    var archivateSMSButton= document.createElement('button') ;
-    archivateSMSButton.textContent = 'Архив+SMS';
-    archivateSMSButton.onclick = function() {
-	sendSMSForm.submit();
-	setTimeout(archivateForm.submit, 200);
-	setTimeout(exit, 500);
-    };
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
+    var archivateInput = document.querySelector('[value="В архив!"]');
     var details = document.getElementsByClassName('details')[0];
-    var parent = details.tBodies[0];
-    var elem = parent.children[0].children[1];
-    elem.insertBefore(archivateForm, elem.children[0]);
-    elem.insertBefore(archivateSMSButton, elem.children[0]);
+    if (archivateInput) {
+	archivateInput.value = 'Архив';
+	archivateInput.style.display = 'inline-block';
+	var archivateSMSButton= document.createElement('button') ;
+	archivateSMSButton.textContent = 'Архив+SMS';
+	archivateSMSButton.onclick = function() {
+	    sendSMSForm.submit();
+	    setTimeout(archivateForm.submit, 200);
+	    setTimeout(exit, 500);
+	};
+	var parent = details.tBodies[0];
+	var elem = parent.children[0].children[1];
+	elem.insertBefore(archivateForm, elem.children[0]);
+	elem.insertBefore(archivateSMSButton, elem.children[0]);
+    };
     var rows = details.getElementsByTagName('tr');
     for (var i=0, len=rows.length; i<len; i++) {
 	elem = rows[i];
