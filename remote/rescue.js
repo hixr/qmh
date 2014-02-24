@@ -135,7 +135,7 @@ function formatOrder() {
     archivateSMSInput.type = "submit";
     archivateSMSInput.onclick = function() {
 	sendSMSForm.submit();
-	archivateForm.submit();
+	setTimeout(archivateForm.submit, 200);
 	setTimeout(exit, 500);
     };
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
