@@ -135,7 +135,7 @@ function formatOrder() {
 	    var parent = details.tBodies[0];
 	    parent.insertBefore(elem, parent.children[0]);
 	    var createdDate = strToDate(content.textContent);
-	    if (createdDate < getDayBefore(6)) {
+	    if (createdDate > getDayBefore(5)) {
 		content.style.backgroundColor = 'lavenderBlush';
 	    };
 	};
