@@ -129,10 +129,10 @@ function getDayBefore(days) {
 function formatOrder() {
     var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
     var archivateInput = document.querySelector('[value="В архив!"]');
-    archivateInput.value = "Архив";
+    archivateInput.value = 'Архив';
     var archivateSMSInput = document.createElement('input');
-    archivateSMSInput.value = "Архив+SMS";
-    archivateSMSInput.type = "submit";
+    archivateSMSInput.value = 'Архив+SMS';
+    archivateSMSInput.type = 'button';
     archivateSMSInput.onclick = function() {
 	sendSMSForm.submit();
 	setTimeout(archivateForm.submit, 200);
