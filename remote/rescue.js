@@ -28,7 +28,7 @@ function processList() {
 
 function processOrder() {
     document.getElementById('sms_message').value = 'Спасибо за обращение в ОНЛАЙНТУРС, мы всегда Вам рады. Наш телефон: 8(800)775-33-79 www.onlinetours.ru';
-    
+    formatOrder();
 };
 
 function transformDate(dateOrString) {
@@ -135,7 +135,7 @@ function formatOrder() {
 	    var parent = details.tBodies[0];
 	    parent.insertBefore(elem, parent.children[0]);
 	    var createdDate = strToDate(content.textContent);
-	    if (createdDate < getDayBefore(5)) {
+	    if (createdDate < getDayBefore(6)) {
 		content.style.backgroundColor = 'lavenderBlush';
 	    };
 	};
