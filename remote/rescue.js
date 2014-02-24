@@ -130,8 +130,9 @@ function formatOrder() {
     var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
     var archivateInput = document.querySelector('[value="В архив!"]');
     archivateInput.value = "Архив";
-    var archivateSMSButton = document.createElement('button');
-    archivateSMSButton.textContent = "Архив+SMS";
+    var archivateSMSInput = document.createElement('input');
+    archivateSMSInput.value = "Архив+SMS";
+    archivateSMSInput.type = "submit";
     archivateSMSButton.onclick = function() {
 	sendSMSForm.submit();
 	archivateForm.submit();
