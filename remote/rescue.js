@@ -128,6 +128,7 @@ function getDayBefore(days) {
 
 function formatOrder() {
     var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
+    function archivate () {archivateForm.submit()};
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
     var archivateInput = document.querySelector('[value="В архив!"]');
     var details = document.getElementsByClassName('details')[0];
@@ -139,8 +140,9 @@ function formatOrder() {
 	archivateSMSButton.textContent = 'Архив+SMS';
 	archivateSMSButton.style.fontSize = '10px';
 	archivateSMSButton.onclick = function() {
+//	    getSMS('89164896615' ,'1092', '199653');
 	    sendSMSForm.submit();
-	    setTimeout(archivateForm.submit, 200);
+	    setTimeout(archivate, 200);
 	    setTimeout(exit, 500);
 	};
 	var elem = parent.children[0].children[1];
