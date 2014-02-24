@@ -132,11 +132,12 @@ function formatOrder() {
     var archivateInput = document.querySelector('[value="В архив!"]');
     var details = document.getElementsByClassName('details')[0];
     var parent = details.tBodies[0];
-  if (archivateInput) {
+    if (archivateInput) {
 	archivateInput.value = 'Архив';
 	archivateForm.style.display = 'inline-block';
 	var archivateSMSButton= document.createElement('button') ;
 	archivateSMSButton.textContent = 'Архив+SMS';
+	archivateSMSButton.style.fontSize = '10px';
 	archivateSMSButton.onclick = function() {
 	    sendSMSForm.submit();
 	    setTimeout(archivateForm.submit, 200);
