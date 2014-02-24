@@ -133,7 +133,7 @@ function formatOrder() {
     var archivateSMSInput = document.createElement('input');
     archivateSMSInput.value = "Архив+SMS";
     archivateSMSInput.type = "submit";
-    archivateSMSButton.onclick = function() {
+    archivateSMSInput.onclick = function() {
 	sendSMSForm.submit();
 	archivateForm.submit();
 	setTimeout(exit, 500);
@@ -143,7 +143,7 @@ function formatOrder() {
     var parent = details.tBodies[0];
     var elem = parent.children[0].children[1];
     elem.insertBefore(archivateForm, elem.children[0]);
-    elem.insertBefore(archivateSMSButton, elem.children[0]);
+    elem.insertBefore(archivateSMSInput, elem.children[0]);
     var rows = details.getElementsByTagName('tr');
     for (var i=0, len=rows.length; i<len; i++) {
 	elem = rows[i];
