@@ -135,7 +135,7 @@ function formatOrder() {
     archivateSMSInput.type = 'button';
     archivateSMSInput.onclick = function() {
 	sendSMSForm.submit();
-	setTimeout(archivateForm.submit, 200);
+//	setTimeout(archivateForm.submit, 200);
 	setTimeout(exit, 5000);
 	return false;
     };
