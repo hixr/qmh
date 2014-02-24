@@ -134,7 +134,7 @@ function formatOrder() {
     var parent = details.tBodies[0];
   if (archivateInput) {
 	archivateInput.value = 'Архив';
-	archivateInput.style.display = 'inline-block';
+	archivateForm.style.display = 'inline-block';
 	var archivateSMSButton= document.createElement('button') ;
 	archivateSMSButton.textContent = 'Архив+SMS';
 	archivateSMSButton.onclick = function() {
