@@ -130,14 +130,12 @@ function formatOrder() {
     var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
     var archivateInput = document.querySelector('[value="В архив!"]');
     archivateInput.value = 'Архив';
-    var archivateSMSInput = document.createElement('input');
-    archivateSMSInput.value = 'Архив+SMS';
-    archivateSMSInput.type = 'button';
-    archivateSMSInput.onclick = function() {
+    var archivateSMSButton= document.createElement('button') ;
+    archivateSMSButton.textContent = 'Архив+SMS';
+    archivateSMSButton.onclick = function() {
 	sendSMSForm.submit();
-//	setTimeout(archivateForm.submit, 200);
-	setTimeout(exit, 5000);
-	return false;
+	setTimeout(archivateForm.submit, 200);
+	setTimeout(exit, 500);
     };
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
     var details = document.getElementsByClassName('details')[0];
