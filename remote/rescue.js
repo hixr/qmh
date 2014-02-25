@@ -1,3 +1,6 @@
+var agent = {};
+var order = {};
+
 if (/index\.php\?c=orders&m=l&st=unassigned&budget=0&fcity=0&ftime=2&q=50/.test(window.location.href)) {
     processList();
 };
@@ -127,8 +130,13 @@ function getDayBefore(days) {
 };
 
 function formatOrder() {
+    var step = 100;
+    var delay = 0;
+    var elem = document.querySelector('[id="pers_info_agent"]').children[0];
+    agent.id = elem.href.match(/\d+$/)[0];
+    order.id = location.href.match(/\d+$/)[0];
     var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
-    function archivate () {archivateForm.submit()};
+    function archivate() {archivateForm.submit()};
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
     var archivateInput = document.querySelector('[value="В архив!"]');
     var details = document.getElementsByClassName('details')[0];
@@ -140,12 +148,14 @@ function formatOrder() {
 	archivateSMSButton.textContent = 'Архив+SMS';
 	archivateSMSButton.style.fontSize = '10px';
 	archivateSMSButton.onclick = function() {
-//	    getSMS('89164896615' ,'1092', '199653');
+//	    getSMS('89164896615' , agent.id, order.id);
 	    sendSMSForm.submit();
-	    setTimeout(archivate, 200);
-	    setTimeout(exit, 500);
+	    delay += step;
+	    setTimeout(archivate, delay);
+	    delay += step;
+//	    setTimeout(exit, delay);
 	};
-	var elem = parent.children[0].children[1];
+	elem = parent.children[0].children[1];
 	elem.insertBefore(archivateForm, elem.children[0]);
 	elem.insertBefore(archivateSMSButton, elem.children[0]);
     };
