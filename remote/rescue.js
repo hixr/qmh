@@ -130,7 +130,7 @@ function getDayBefore(days) {
 };
 
 function formatOrder() {
-    var step = 300;
+    var step = 400;
     var delay = 0;
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
