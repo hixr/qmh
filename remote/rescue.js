@@ -172,5 +172,6 @@ function formatOrder() {
 	    };
 	};
     };
+    ClientHistory(order.id, 1);
 };
 
