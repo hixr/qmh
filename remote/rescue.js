@@ -1,3 +1,4 @@
+document.body.style.backgroundColor = 'linen';
 var agent = {};
 var order = {};
 if (/index\.php\?c=orders&m=l&st=unassigned&budget=0&fcity=0&ftime=2&q=50/.test(window.location.href)) {
@@ -29,7 +30,6 @@ function formatOrder() {
     hide(header);
     var content = document.getElementById('content');
     content.style.paddingTop = 0;
-    document.body.style.backgroundColor = 'linen';
     var scroller = document.querySelector('[style="padding: 5px 250px;position: absolute;top: 70px;"]');
     hide(scroller);
     var search = document.querySelector('[name="otsmsearch_city"]').parentNode;
