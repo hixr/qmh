@@ -1,6 +1,5 @@
 var agent = {};
 var order = {};
-
 if (/index\.php\?c=orders&m=l&st=unassigned&budget=0&fcity=0&ftime=2&q=50/.test(window.location.href)) {
     processList();
 };
@@ -10,9 +9,73 @@ if (/index\.php\?c=orders&m=l&st=forcheck&budget=0&fcity=1&ftime=all&q=50/.test(
 if (/index\.php\?c=orders&m=order&id=/.test(window.location.href)) {
     processOrder();
 };
-
-function exit() {window.open("","_self"); window.close()};
-
+function dateToStr(date) {
+    return transformDate(date);
+};
+function exit() {
+    window.open("","_self");
+    window.close()
+};
+function formatOrder() {
+    var step = 400;
+    var delay = 0;
+    var globalMessageBox = document.getElementById('globalmessagebox');
+    hide(globalMessageBox);
+    var globalSearchBox = document.getElementById('globalsearchbox');
+    hide(globalSearchBox);
+    var header = document.getElementById('header');
+    hide(header);
+    var elem = document.querySelector('[id="pers_info_agent"]').children[0];
+    agent.id = elem.href.match(/\d+$/)[0];
+    order.id = location.href.match(/\d+$/)[0];
+    var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
+    function archivate() {archivateForm.submit()};
+    var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
+    var archivateInput = document.querySelector('[value="В архив!"]');
+    var details = document.getElementsByClassName('details')[0];
+    var parent = details.tBodies[0];
+    if (archivateInput) {
+	archivateInput.value = 'Архив';
+	archivateForm.style.display = 'inline-block';
+	var archivateSMSButton= document.createElement('button') ;
+	archivateSMSButton.textContent = 'Архив+SMS';
+	archivateSMSButton.style.fontSize = '10px';
+	archivateSMSButton.onclick = function() {
+//	    getSMS('89164896615' , agent.id, order.id);
+	    sendSMSForm.submit();
+	    delay += step;
+	    setTimeout(archivate, delay);
+	    delay += step;
+//	    setTimeout(exit, delay);
+	};
+	elem = parent.children[0].children[1];
+	elem.insertBefore(archivateForm, elem.children[0]);
+	elem.insertBefore(archivateSMSButton, elem.children[0]);
+    };
+    var rows = details.getElementsByTagName('tr');
+    for (var i=0, len=rows.length; i<len; i++) {
+	elem = rows[i];
+	var name = elem.children[0].textContent;
+	var content = elem.children[1];
+	if (name == 'Заявка создана:') {
+	    parent.insertBefore(elem, parent.children[0]);
+	    var createdDate = strToDate(content.textContent);
+	    if (createdDate > getDayBefore(5)) {
+		content.style.backgroundColor = 'lavenderBlush';
+	    };
+	};
+    };
+    ClientHistory(order.id, 1);
+};
+function getDayBefore(days) {
+    var date = new Date();
+    date.setDate(date.getDate()-days);
+    date.setHours(0, 0, 0);
+    return date;
+};
+function hide(elem) {
+    elem.style.display = 'none';
+};
 function processList() {
     document.getElementsByClassName('listing')[0].addEventListener('click', handler);
     
@@ -30,12 +93,13 @@ function processList() {
     };
     
 };
-
 function processOrder() {
     document.getElementById('sms_message').value = 'Спасибо за обращение в ОНЛАЙНТУРС, мы всегда Вам рады. Наш телефон: 8(800)775-33-79 www.onlinetours.ru';
     formatOrder();
 };
-
+function strToDate(str) {
+    return transformDate(str);
+};
 function transformDate(dateOrString) {
     function convertMonth(month) {
 	var	monthNamesShort = {
@@ -112,66 +176,5 @@ function transformDate(dateOrString) {
 	return new Date(date[2], date[1], date[0], time[0], time[1], time[2], ms);
     };
     throw 'Type error in date-string transformation, input: ' + dateOrString;
-};
-
-function strToDate(str) {
-    return transformDate(str);
-};
-
-function dateToStr(date) {
-    return transformDate(date);
-};
-
-function getDayBefore(days) {
-    var date = new Date();
-    date.setDate(date.getDate()-days);
-    date.setHours(0, 0, 0);
-    return date;
-};
-
-function formatOrder() {
-    var step = 400;
-    var delay = 0;
-    var elem = document.querySelector('[id="pers_info_agent"]').children[0];
-    agent.id = elem.href.match(/\d+$/)[0];
-    order.id = location.href.match(/\d+$/)[0];
-    var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
-    function archivate() {archivateForm.submit()};
-    var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
-    var archivateInput = document.querySelector('[value="В архив!"]');
-    var details = document.getElementsByClassName('details')[0];
-    var parent = details.tBodies[0];
-    if (archivateInput) {
-	archivateInput.value = 'Архив';
-	archivateForm.style.display = 'inline-block';
-	var archivateSMSButton= document.createElement('button') ;
-	archivateSMSButton.textContent = 'Архив+SMS';
-	archivateSMSButton.style.fontSize = '10px';
-	archivateSMSButton.onclick = function() {
-//	    getSMS('89164896615' , agent.id, order.id);
-	    sendSMSForm.submit();
-	    delay += step;
-	    setTimeout(archivate, delay);
-	    delay += step;
-//	    setTimeout(exit, delay);
-	};
-	elem = parent.children[0].children[1];
-	elem.insertBefore(archivateForm, elem.children[0]);
-	elem.insertBefore(archivateSMSButton, elem.children[0]);
-    };
-    var rows = details.getElementsByTagName('tr');
-    for (var i=0, len=rows.length; i<len; i++) {
-	elem = rows[i];
-	var name = elem.children[0].textContent;
-	var content = elem.children[1];
-	if (name == 'Заявка создана:') {
-	    parent.insertBefore(elem, parent.children[0]);
-	    var createdDate = strToDate(content.textContent);
-	    if (createdDate > getDayBefore(5)) {
-		content.style.backgroundColor = 'lavenderBlush';
-	    };
-	};
-    };
-    ClientHistory(order.id, 1);
 };
 
