@@ -25,6 +25,9 @@ function formatOrder() {
     hide(globalSearchBox);
     var header = document.getElementById('header');
     hide(header);
+    var content = document.getElementById('content');
+    content.style.paddingTop = null;
+    
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
