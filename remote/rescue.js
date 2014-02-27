@@ -21,6 +21,8 @@ function formatOrder() {
     var delay = 0;
     var globalMessageBox = document.getElementById('globalmessagebox');
     hide(globalMessageBox);
+    var ajaxSending = document.getElementById('ajax_sending');
+    hide(ajaxSending);
     var globalSearchBox = document.getElementById('globalsearchbox');
     hide(globalSearchBox);
     var header = document.getElementById('header');
