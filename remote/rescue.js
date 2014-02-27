@@ -28,7 +28,8 @@ function formatOrder() {
     var content = document.getElementById('content');
     content.style.paddingTop = 0;
     document.body.style.backgroundColor = 'linen';
-    
+    var scroller = document.querySelector('[style="padding: 5px 250px;position: absolute;top: 70px;"]');
+    hide(scroller);
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
