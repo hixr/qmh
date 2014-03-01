@@ -101,6 +101,7 @@ function insertReversedListBefore(list, elem) {
     var ul = document.createElement('ul');
     for (var i=list.length; i--;) {
 	var li = list.children[i];
+	console.log(li);
 	ul.appendChild(li);
     };
     list.parentNode.removeChild(list);
