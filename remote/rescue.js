@@ -47,6 +47,10 @@ function formatOrder() {
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
     var archivateInput = document.querySelector('[value="В архив!"]');
     var details = document.getElementsByClassName('details')[0];
+    var callsList = document.querySelector('td>h3+ul>li>object').parentNode.parentNode;
+    insertReversedListBefore(callsList, details);
+    var sentSmsList = document.querySelector('td>h3+ul>li>strong').parentNode.parentNode;
+    insertReversedListBefore(sentSmsList, details);
     var parent = details.tBodies[0];
     if (archivateInput) {
 	archivateInput.value = 'Архив';
@@ -89,6 +93,18 @@ function getDayBefore(days) {
 };
 function hide(elem) {
     elem.style.display = 'none';
+};
+function insertReversedListBefore(list, elem) {
+    if (list==null || elem==null) {
+	return;
+    };
+    var ul = document.createElement('ul');
+    for (var i=list.length; i--;) {
+	var li = list.children[i];
+	ul.appendChild(li);
+    };
+    list.parentNode.removeChild(list);
+    elem.parentNode.insertBefore(ul, elem);
 };
 function processList() {
     document.getElementsByClassName('listing')[0].addEventListener('click', handler);
