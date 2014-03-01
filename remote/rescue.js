@@ -21,7 +21,8 @@ function formatOrder() {
     var step = 400;
     var delay = 0;
     var onsite = document.querySelector('[style="width:250px;height:44px; display:block; background:url(../../images/b_onsite.jpg); float:right; margin-right:150px;"]');
-    if (onsite) {
+    var inwork = document.querySelectorAll('td[width="300"] p a');
+    if (onsite || inwork) {
 	document.body.style.backgroundColor = 'honeyDew';
     };
     var globalMessageBox = document.getElementById('globalmessagebox');
