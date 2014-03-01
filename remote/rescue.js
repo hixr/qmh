@@ -101,7 +101,7 @@ function hide(elem) {
     elem.style.display = 'none';
 };
 function insertReversedListBefore(list, elem) {
-    console.log(list);
+    console.log(list.length);
     console.log(elem);
     if (list==null || elem==null) {
 	return;
