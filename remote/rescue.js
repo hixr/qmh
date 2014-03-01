@@ -47,16 +47,16 @@ function formatOrder() {
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
     var archivateInput = document.querySelector('[value="В архив!"]');
     var details = document.getElementsByClassName('details')[0];
-    var callsList = document.querySelector('td>h3+ul>li>object');
-    if (callsList) {
-	callsList = callsList.parentNode.parentNode;
-    };
-    insertReversedListBefore(callsList, details);
     var sentSmsList = document.querySelector('td>h3+ul>li>strong');
     if (sentSmsList) {
 	sentSmsList = sentSmsList.parentNode.parentNode;
     };
     insertReversedListBefore(sentSmsList, details);
+    var callsList = document.querySelector('td>h3+ul>li>object');
+    if (callsList) {
+	callsList = callsList.parentNode.parentNode;
+    };
+    insertReversedListBefore(callsList, details);
     var parent = details.tBodies[0];
     if (archivateInput) {
 	archivateInput.value = 'Архив';
