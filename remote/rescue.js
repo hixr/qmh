@@ -101,15 +101,12 @@ function hide(elem) {
     elem.style.display = 'none';
 };
 function insertReversedListBefore(list, elem) {
-    console.log(list.length);
-    console.log(elem);
     if (list==null || elem==null) {
 	return;
     };
     var ul = document.createElement('ul');
-    for (var i=list.length; i--;) {
+    for (var i=list.children.length; i--;) {
 	var li = list.children[i];
-	console.log(li);
 	ul.appendChild(li);
     };
     list.parentNode.removeChild(list);
