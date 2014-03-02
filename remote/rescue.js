@@ -48,6 +48,8 @@ function formatOrder() {
 	utcClock.style.backgroundColor = 'crimson';
 	document.body.style.backgroundColor = 'lavenderBlush';
     };
+    var abuseLink = document.querySelector('td>a[href^="javascript:getAbuse("]');
+    hide(abuseLink);
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
