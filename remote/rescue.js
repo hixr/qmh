@@ -48,17 +48,22 @@ function formatOrder() {
     var archivateInput = document.querySelector('[value="В архив!"]');
     var details = document.getElementsByClassName('details')[0];
     var parent = details.tBodies[0];
-    var child = parent.children[2];
+    var child = parent.children[1];
+    var tr = document.createElement('tr');
+    var td = document.createElement('td');
+    td.setAttribute('colspan', '2');
+    tr.appendChild(td);
+    parent.insertBefore(tr, child);
     var sentSmsList = document.querySelector('td>h3+ul>li>strong');
     if (sentSmsList) {
-	sentSmsList = sentSmsList.parentNode.parentNode;
+	sentSmsList = reverseList(sentSmsList.parentNode.parentNode);
+	td.appendChild(sentSmsList);
     };
-    insertReversedListBefore(sentSmsList, child);
     var callsList = document.querySelector('td>h3+ul>li>object');
     if (callsList) {
-	callsList = callsList.parentNode.parentNode;
+	callsList = reverseList(callsList.parentNode.parentNode);
+	td.appendChild(callsList);
     };
-    insertReversedListBefore(callsList, child);
     if (archivateInput) {
 	archivateInput.value = 'Архив';
 	archivateForm.style.display = 'inline-block';
@@ -101,18 +106,6 @@ function getDayBefore(days) {
 function hide(elem) {
     elem.style.display = 'none';
 };
-function insertReversedListBefore(list, elem) {
-    if (list==null || elem==null) {
-	return;
-    };
-    var ul = document.createElement('ul');
-    for (var i=list.children.length; i--;) {
-	var li = list.children[i];
-	ul.appendChild(li);
-    };
-    list.parentNode.removeChild(list);
-    elem.parentNode.insertBefore(ul, elem);
-};
 function processList() {
     document.getElementsByClassName('listing')[0].addEventListener('click', handler);
     
@@ -133,6 +126,17 @@ function processList() {
 function processOrder() {
     document.getElementById('sms_message').value = 'Спасибо за обращение в ОНЛАЙНТУРС, мы всегда Вам рады. Наш телефон: 8(800)775-33-79 www.onlinetours.ru';
     formatOrder();
+};
+function reverseList(list) {
+    if (list==null) {
+	return;
+    };
+    var ul = document.createElement('ul');
+    for (var i=list.children.length; i--;) {
+	var li = list.children[i];
+	ul.appendChild(li);
+    };
+    return ul;
 };
 function strToDate(str) {
     return transformDate(str);
