@@ -18,7 +18,7 @@ function exit() {
     window.close()
 };
 function formatOrder() {
-    var step = 400;
+    var step = 1000;
     var delay = 0;
     var onsite = document.querySelector('[style="width:250px;height:44px; display:block; background:url(../../images/b_onsite.jpg); float:right; margin-right:150px;"]');
     var inwork = document.querySelector('td[width="300"]>p>a');
@@ -40,11 +40,13 @@ function formatOrder() {
     var search = document.querySelector('[name="otsmsearch_city"]').parentNode;
     hide(search);
     var changeCp = document.querySelector('[action="/db/index.php?c=orders&m=changecp"]');
-    hide(changeCp);
+    if (changeCp) {
+	hide(changeCp);
+    };
     var utcClock = document.getElementById('utcclock');
-   if (utcClock) {
-       var clientTime = strToDate(utcClock.textContent).getHours;
-   };
+    if (utcClock) {
+	var clientTime = strToDate(utcClock.textContent).getHours;
+    };
     if (clientTime<9 || clientTime>21) {
 	utcClock.style.color = 'white';
 	utcClock.style.backgroundColor = 'crimson';
@@ -52,7 +54,9 @@ function formatOrder() {
     };
     var abuseLink = document.querySelector('td>a[href^="javascript:getAbuse("]');
     hide(abuseLink);
-    // [].forEach.call(document.querySelectorAll('td>br'), function(el) {el.style.display = 'none';});
+    var contactsCell = abuseLink.parentNode;
+    [].forEach.call(contactsCell.querySelectorAll('br+br, p+br'), function(el) {el.style.display = 'none';});
+    
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
