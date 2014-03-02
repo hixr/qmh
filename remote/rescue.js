@@ -106,6 +106,7 @@ function formatOrder() {
 	    var createdDate = strToDate(content.textContent);
 	    if (createdDate > getDayBefore(5)) {
 		content.style.backgroundColor = 'lavenderBlush';
+		document.body.style.backgroundColor = 'honeyDew';
 	    };
 	};
     };
