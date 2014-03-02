@@ -42,7 +42,9 @@ function formatOrder() {
     var changeCp = document.querySelector('[action="/db/index.php?c=orders&m=changecp"]');
     hide(changeCp);
     var utcClock = document.getElementById('utcclock');
-    var clientTime = strToDate(utcClock.textContent).getHours;
+   if (utcClock) {
+       var clientTime = strToDate(utcClock.textContent).getHours;
+   };
     if (clientTime<9 || clientTime>21) {
 	utcClock.style.color = 'white';
 	utcClock.style.backgroundColor = 'crimson';
