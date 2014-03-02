@@ -55,7 +55,7 @@ function formatOrder() {
     var abuseLink = document.querySelector('td>a[href^="javascript:getAbuse("]');
     hide(abuseLink);
     var contactsCell = abuseLink.parentNode;
-    [].forEach.call(contactsCell.querySelectorAll('br+br, p+br'), function(el) {el.style.display = 'none';});
+    [].forEach.call(contactsCell.querySelectorAll('br+br, a+br'), function(el) {el.style.display = 'none';});
     
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
