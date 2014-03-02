@@ -39,6 +39,8 @@ function formatOrder() {
     hide(scroller);
     var search = document.querySelector('[name="otsmsearch_city"]').parentNode;
     hide(search);
+    var changeCp = document.querySelector('[action="/db/index.php?c=orders&m=changecp"]');
+    hide(changeCp);
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
