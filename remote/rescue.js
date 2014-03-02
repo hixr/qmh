@@ -50,6 +50,7 @@ function formatOrder() {
     };
     var abuseLink = document.querySelector('td>a[href^="javascript:getAbuse("]');
     hide(abuseLink);
+    // [].forEach.call(document.querySelectorAll('td>br'), function(el) {el.style.display = 'none';});
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
@@ -67,7 +68,7 @@ function formatOrder() {
     parent.insertBefore(tr, child);
     var sentSmsList = document.querySelector('td>h3+ul>li>strong');
     if (sentSmsList) {
-	sentSmsList = reverseList(sentSmsList.parentNode.parentNode);
+	sentSmsList = sentSmsList.parentNode.parentNode;
 	td.appendChild(sentSmsList);
     };
     var callsList = document.querySelector('td>h3+ul>li>object');
