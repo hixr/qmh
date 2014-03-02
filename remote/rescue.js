@@ -41,6 +41,13 @@ function formatOrder() {
     hide(search);
     var changeCp = document.querySelector('[action="/db/index.php?c=orders&m=changecp"]');
     hide(changeCp);
+    var utcClock = document.getElementById('utcclock');
+    var clientTime = strToDate(utcClock.textContent).getHours;
+    if (clientTime<9 || clientTime>21) {
+	utcClock.style.color = 'white';
+	utcClock.style.backgroundColor = 'crimson';
+	document.body.style.backgroundColor = 'lavenderBlush';
+    };
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
