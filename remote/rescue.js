@@ -45,7 +45,7 @@ function formatOrder() {
     };
     var utcClock = document.getElementById('utcclock');
     if (utcClock) {
-	var clientTime = strToDate(utcClock.textContent).getHours;
+	var clientTime = strToDate(utcClock.textContent).getHours();
     };
     if (clientTime<9 || clientTime>21) {
 	utcClock.style.color = 'white';
@@ -56,7 +56,7 @@ function formatOrder() {
     hide(abuseLink);
     var contactsCell = abuseLink.parentNode;
     [].forEach.call(contactsCell.querySelectorAll('br+br, a+br'), function(el) {el.style.display = 'none';});
-    
+    // contactsCell.innerHTML.match(/javascript:getCall\('(\d{11})/g);
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
