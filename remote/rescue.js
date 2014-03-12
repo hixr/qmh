@@ -43,15 +43,17 @@ function formatOrder() {
     if (changeCp) {
 	hide(changeCp);
     };
-    var utcClock = document.getElementById('utcclock');
-    if (utcClock) {
-	var clientTime = strToDate(utcClock.textContent).getHours();
-    };
-    if (clientTime<9 || clientTime>21) {
-	utcClock.style.color = 'white';
-	utcClock.style.backgroundColor = 'crimson';
-	document.body.style.backgroundColor = 'lavenderBlush';
-    };
+    setTimeout(function() {
+	var utcClock = document.getElementById('utcclock');
+	if (utcClock) {
+	    var clientTime = strToDate(utcClock.textContent).getHours();
+	};
+	if (clientTime<9 || clientTime>21) {
+	    utcClock.style.color = 'white';
+	    utcClock.style.backgroundColor = 'crimson';
+	    document.body.style.backgroundColor = 'lavenderBlush';
+	};
+    }, step);
     var abuseLink = document.querySelector('td>a[href^="javascript:getAbuse("]');
     hide(abuseLink);
     var contactsCell = abuseLink.parentNode;
