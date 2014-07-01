@@ -18,8 +18,9 @@ function exit() {
     window.close()
 };
 function formatOrder() {
-    var step = 200;
+    var step = 100;
     var delay = 0;
+    var loadDelay = 3000;
     var onsite = document.querySelector('[style="width:250px;height:44px; display:block; background:url(../../images/b_onsite.jpg); float:right; margin-right:150px;"]');
     var inwork = document.querySelector('td[width="300"]>p>a');
     if (onsite || inwork) {
@@ -53,7 +54,7 @@ function formatOrder() {
 	    utcClock.style.backgroundColor = 'crimson';
 	    document.body.style.backgroundColor = 'lavenderBlush';
 	};
-    }, step);
+    }, loadDelay);
     var abuseLink = document.querySelector('td>a[href^="javascript:getAbuse("]');
     hide(abuseLink);
     var contactsCell = abuseLink.parentNode;
