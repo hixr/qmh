@@ -25,6 +25,7 @@ function formatOrder() {
     var inwork = document.querySelector('td[width="300"]>p>a');
     if (onsite || inwork) {
 	document.body.style.backgroundColor = 'honeyDew';
+	setTimeout(exit, 10*loadDelay);
     };
     var globalMessageBox = document.getElementById('globalmessagebox');
     hide(globalMessageBox);
@@ -53,6 +54,7 @@ function formatOrder() {
 	    utcClock.style.color = 'white';
 	    utcClock.style.backgroundColor = 'crimson';
 	    document.body.style.backgroundColor = 'lavenderBlush';
+	    setTimeout(exit, 10*loadDelay);
 	};
     }, loadDelay);
     var abuseLink = document.querySelector('td>a[href^="javascript:getAbuse("]');
