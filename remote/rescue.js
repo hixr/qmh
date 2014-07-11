@@ -116,6 +116,7 @@ function formatOrder() {
 	    if (createdDate > getDayBefore(5)) {
 		content.style.backgroundColor = 'lavenderBlush';
 		document.body.style.backgroundColor = 'honeyDew';
+		setTimeout(exit, 10*loadDelay);
 	    };
 	};
     };
