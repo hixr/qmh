@@ -42,9 +42,7 @@ function formatOrder() {
     var search = document.querySelector('[name="otsmsearch_city"]').parentNode;
     hide(search);
     var changeCp = document.querySelector('[action="/db/index.php?c=orders&m=changecp"]');
-    if (changeCp) {
-	hide(changeCp);
-    };
+    hide(changeCp);
     setTimeout(function() {
 	var utcClock = document.getElementById('utcclock');
 	if (utcClock) {
@@ -129,7 +127,9 @@ function getDayBefore(days) {
     return date;
 };
 function hide(elem) {
-    elem.style.display = 'none';
+    if (elem) {
+	elem.style.display = 'none';
+    };
 };
 function processList() {
     document.getElementsByClassName('listing')[0].addEventListener('click', handler);
