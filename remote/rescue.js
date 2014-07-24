@@ -39,8 +39,11 @@ function formatOrder() {
     content.style.paddingTop = 0;
     var scroller = document.querySelector('[style="padding: 5px 250px;position: absolute;top: 70px;"]');
     hide(scroller);
-    var search = document.querySelector('[name="otsmsearch_city"]').parentNode;
-    hide(search);
+    var search = document.querySelector('[name="otsmsearch_city"]');
+    if (search) {
+	search = search.parentNode;
+	hide(search);
+    };
     var changeCp = document.querySelector('[action="/db/index.php?c=orders&m=changecp"]');
     hide(changeCp);
     setTimeout(function() {
