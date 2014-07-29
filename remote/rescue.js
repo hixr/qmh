@@ -69,6 +69,9 @@ function formatOrder() {
     var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
     function archivate() {archivateForm.submit()};
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
+    var submitSMS = function() {
+	sendSMSForm.submit();
+    };
     var archivateInput = document.querySelector('[value="В архив!"]');
     var details = document.getElementsByClassName('details')[0];
     var parent = details.tBodies[0];
@@ -113,6 +116,14 @@ function formatOrder() {
     notAnswering.textContent = 'Не отвечает';
     notAnswering.style.fontSize = '10px';
     notAnswering.onclick = function() {
+	delay += step;
+	setTimeout(getSMSFunc, delay);
+	delay += step;
+	setTimeout(submitSMS, delay);
+	//delay += step;
+	//setTimeout(archivate, delay);
+	delay += step;
+	setTimeout(exit, delay);
 	alert(order.id + ' Не отвечает');
     };
     elem.insertBefore(notAnswering, elem.children[0]);
@@ -133,9 +144,11 @@ function formatOrder() {
 	    delay += step;
 	    setTimeout(getSMSFunc, delay);
 	    delay += step;
+	    sendSMSForm.submit();
+	    delay += step;
 	    setTimeout(archivate, delay);
 	    delay += step;
-	    //	    setTimeout(exit, delay);
+	    setTimeout(exit, delay);
 	};
 	elem.insertBefore(archivateForm, elem.children[0]);
 	elem.insertBefore(archivateSMSButton, elem.children[0]);
