@@ -102,6 +102,8 @@ function formatOrder() {
     elem.insertBefore(notAnswering, elem.children[0]);
     var veryBusy = createStatusButton('Очень занят', 'ОЗ', true);
     elem.insertBefore(veryBusy, elem.children[0]);
+    var schedule = createStatusButton('Отложить', 'ОТ', false);
+    elem.insertBefore(schedule, elem.children[0]);
     if (archivateInput) {
 	archivateInput.value = 'Архив';
 	archivateForm.style.display = 'inline-block';
