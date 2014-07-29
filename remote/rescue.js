@@ -90,10 +90,10 @@ function formatOrder() {
 	td.appendChild(callsList);
     };
     elem = parent.children[0].children[1];
-    var notInteresting = document.createElement('button');
-    notInteresting.textContent = 'Не актуально';
-    notInteresting.style.fontSize = '10px';
-    notInteresting.onclick = function() {
+    var notInterested = document.createElement('button');
+    notInterested.textContent = 'Не актуально';
+    notInterested.style.fontSize = '10px';
+    notInterested.onclick = function() {
 	alert(order.id + ' Не актуально');
     };
     elem.insertBefore(notInterested, elem.children[0]);
