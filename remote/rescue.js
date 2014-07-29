@@ -92,7 +92,7 @@ function formatOrder() {
 	td.appendChild(callsList);
     };
     elem = parent.children[0].children[1];
-    var notInterested = createStatusButton('Не актуально', 'НА', true);
+    var notInterested = createStatusButton('Не актуально', 'УК', true);
     elem.insertBefore(notInterested, elem.children[0]);
     var transfer = createStatusButton('Актуально', 'АК', false);
     elem.insertBefore(transfer, elem.children[0]);
