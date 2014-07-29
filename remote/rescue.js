@@ -98,7 +98,7 @@ function formatOrder() {
     elem.insertBefore(transfer, elem.children[0]);
     var returnInWork = createStatusButton('Реинкарнация', 'РЕ', false);
     elem.insertBefore(returnInWork, elem.children[0]);
-    var notAnswering = createStatusButton('Не отвечает', 'НО', true);
+    var notAnswering = createStatusButton('Не отвечает', 'НД', true);
     elem.insertBefore(notAnswering, elem.children[0]);
     var veryBusy = createStatusButton('Очень занят', 'ОЗ', true);
     elem.insertBefore(veryBusy, elem.children[0]);
