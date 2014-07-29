@@ -105,7 +105,7 @@ function formatOrder() {
     };
     var returnInWork = document.createElement('button');
     returnInWork.textContent = 'Реинкарнация';
-    returnInWork.style.fontSIze = '10px';
+    returnInWork.style.fontSize = '10px';
     returnInWork.onclick = function() {
 	alert(order.id + ' Реинкарнация');
     };
