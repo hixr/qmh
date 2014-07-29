@@ -62,7 +62,7 @@ function formatOrder() {
     hide(abuseLink);
     var contactsCell = abuseLink.parentNode;
     [].forEach.call(contactsCell.querySelectorAll('br+br, a+br'), function(el) {el.style.display = 'none';});
-    var getSMSFunc = new Function( contactsCell.match(/getSMS\(.*?\);/)[0] );
+    var getSMSFunc = new Function( contactsCell.innerHTML.match(/getSMS\(.*?\);/)[0] );
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
