@@ -18,6 +18,7 @@ function exit() {
     window.close()
 };
 function formatOrder() {
+    order.id = location.href.match(/\d+$/)[0];
     var step = 200;
     var delay = 0;
     var loadDelay = 3000;
@@ -95,16 +96,46 @@ function formatOrder() {
 	archivateSMSButton.textContent = 'Архив+SMS';
 	archivateSMSButton.style.fontSize = '10px';
 	archivateSMSButton.onclick = function() {
-//	    getSMS('89164896615' , agent.id, order.id);
+	    //	    getSMS('89164896615' , agent.id, order.id);
 	    sendSMSForm.submit();
 	    delay += step;
 	    setTimeout(archivate, delay);
 	    delay += step;
-//	    setTimeout(exit, delay);
+	    //	    setTimeout(exit, delay);
 	};
 	elem = parent.children[0].children[1];
 	elem.insertBefore(archivateForm, elem.children[0]);
 	elem.insertBefore(archivateSMSButton, elem.children[0]);
+    };
+    var notInteresting = document.createElement('button');
+    notInteresting.textContent = 'Не актуально';
+    notInteresting.style.fontSize = '10px';
+    notInteresting.onclick = function() {
+	alert(order.id + ' Не актуально');
+    };
+    var transfer = document.createElement('button');
+    transfer.textContent = 'Актуально';
+    transfer.style.fontSIze = '10px';
+    transfer.onclick = function() {
+	alert(order.id + ' Актуально');
+    };
+    var returnInWork = document.createElement('button');
+    returnInWork.textContent = 'Реинкарнация';
+    returnInWork.style.fontSIze = '10px';
+    returnInWork.onclick = function() {
+	alert(order.id + ' Реинкарнация');
+    };
+    var notAnswering = document.createElement('button');
+    notAnswering.textContent = 'Не отвечает';
+    notAnswering.style.fontSIze = '10px';
+    notAnswering.onclick = function() {
+	alert(order.id + ' Не отвечает');
+    };
+    var veryBusy = document.createElement('button');
+    veryBusy.textContent = 'Очень занят';
+    veryBusy.style.fontSIze = '10px';
+    veryBusy.onclick = function() {
+	alert(order.id + ' Очень занят');
     };
     var rows = details.getElementsByTagName('tr');
     for (var i=0, len=rows.length; i<len; i++) {
