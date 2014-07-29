@@ -138,26 +138,26 @@ function formatOrder() {
 	};
     };
     ClientHistory(order.id, 1);
-};
-function createStatusButton(description, shortName, requiresSMS) {
-    var button = document.createElement('button');
-    button.textContent = shortName;
-    button.style.fontSize = '10px';
-    button.onclick = function() {
-	delay = 0;
-	if (requiresSMS) {
+    function createStatusButton(description, shortName, requiresSMS) {
+	var button = document.createElement('button');
+	button.textContent = shortName;
+	button.style.fontSize = '10px';
+	button.onclick = function() {
+	    delay = 0;
+	    if (requiresSMS) {
+		delay += step;
+		setTimeout(getSMSFunc, delay);
+		delay += step;
+		setTimeout(submitSMS, delay);
+	    };
 	    delay += step;
-	    setTimeout(getSMSFunc, delay);
+	    setTimeout(archivate, delay);
 	    delay += step;
-	    setTimeout(submitSMS, delay);
+	    setTimeout(exit, delay);
+	    prompt('Статус:', order.id + ' ' + description);
 	};
-	delay += step;
-	setTimeout(archivate, delay);
-	delay += step;
-	setTimeout(exit, delay);
-	prompt('Статус:', order.id + ' ' + description);
+	return button;
     };
-    return button;
 };
 function getDayBefore(days) {
     var date = new Date();
