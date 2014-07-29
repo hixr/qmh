@@ -92,47 +92,15 @@ function formatOrder() {
 	td.appendChild(callsList);
     };
     elem = parent.children[0].children[1];
-    var notInterested = document.createElement('button');
-    notInterested.textContent = 'Не актуально';
-    notInterested.style.fontSize = '10px';
-    notInterested.onclick = function() {
-	alert(order.id + ' Не актуально');
-    };
+    var notInterested = createStatusButton('Не актуально', 'НЕАКТ', true);
     elem.insertBefore(notInterested, elem.children[0]);
-    var transfer = document.createElement('button');
-    transfer.textContent = 'Актуально';
-    transfer.style.fontSIze = '10px';
-    transfer.onclick = function() {
-	alert(order.id + ' Актуально');
-    };
-    var returnInWork = document.createElement('button');
-    returnInWork.textContent = 'Реинкарнация';
-    returnInWork.style.fontSize = '10px';
-    returnInWork.onclick = function() {
-	alert(order.id + ' Реинкарнация');
-    };
+    var transfer = createStatusButton('Актуально', 'АКТ', false);
+    elem.insertBefore(transfer, elem.children[0]);
+    var returnInWork = createStatusButton('Реинкарнация', 'РЕИНК', false);
     elem.insertBefore(returnInWork, elem.children[0]);
-    var notAnswering = document.createElement('button');
-    notAnswering.textContent = 'Не отвечает';
-    notAnswering.style.fontSize = '10px';
-    notAnswering.onclick = function() {
-	delay += step;
-	setTimeout(getSMSFunc, delay);
-	delay += step;
-	setTimeout(submitSMS, delay);
-	//delay += step;
-	//setTimeout(archivate, delay);
-	delay += step;
-	setTimeout(exit, delay);
-	alert(order.id + ' Не отвечает');
-    };
+    var notAnswering = createStatusButton('Не отвечает', 'НЕОТВ', true);
     elem.insertBefore(notAnswering, elem.children[0]);
-    var veryBusy = document.createElement('button');
-    veryBusy.textContent = 'Очень занят';
-    veryBusy.style.fontSize = '10px';
-    veryBusy.onclick = function() {
-	alert(order.id + ' Очень занят');
-    };
+    var veryBusy = createStatusButton('Очень занят', 'ОЧЗАН', true);
     elem.insertBefore(veryBusy, elem.children[0]);
     if (archivateInput) {
 	archivateInput.value = 'Архив';
@@ -141,10 +109,11 @@ function formatOrder() {
 	archivateSMSButton.textContent = 'Архив+SMS';
 	archivateSMSButton.style.fontSize = '10px';
 	archivateSMSButton.onclick = function() {
+	    delay = 0;
 	    delay += step;
 	    setTimeout(getSMSFunc, delay);
 	    delay += step;
-	    sendSMSForm.submit();
+	    setTimeout(submitSMS, delay);
 	    delay += step;
 	    setTimeout(archivate, delay);
 	    delay += step;
@@ -169,6 +138,26 @@ function formatOrder() {
 	};
     };
     ClientHistory(order.id, 1);
+};
+function createStatusButton(description, shortName, requiresSMS) {
+    var button = document.createElement('button');
+    button.textContent = shortName;
+    button.style.fontSize = '10px';
+    button.onclick = function() {
+	delay = 0;
+	if (requiresSMS) {
+	    delay += step;
+	    setTimeout(getSMSFunc, delay);
+	    delay += step;
+	    setTimeout(submitSMS, delay);
+	};
+	delay += step;
+	setTimeout(archivate, delay);
+	delay += step;
+	setTimeout(exit, delay);
+	prompt('Статус:', order.id + ' ' + description);
+    };
+    return button;
 };
 function getDayBefore(days) {
     var date = new Date();
