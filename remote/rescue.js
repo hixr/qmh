@@ -18,7 +18,6 @@ function exit() {
     window.close()
 };
 function formatOrder() {
-    order.id = location.href.match(/\d+$/)[0];
     var step = 200;
     var delay = 0;
     var loadDelay = 3000;
@@ -63,7 +62,7 @@ function formatOrder() {
     hide(abuseLink);
     var contactsCell = abuseLink.parentNode;
     [].forEach.call(contactsCell.querySelectorAll('br+br, a+br'), function(el) {el.style.display = 'none';});
-    // contactsCell.innerHTML.match(/javascript:getCall\('(\d{11})/g);
+    var getSMSFunc = new Function( contactsCell.match(/getSMS\(.*?\);/); );
     var elem = document.querySelector('[id="pers_info_agent"]').children[0];
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
@@ -131,8 +130,8 @@ function formatOrder() {
 	archivateSMSButton.textContent = 'Архив+SMS';
 	archivateSMSButton.style.fontSize = '10px';
 	archivateSMSButton.onclick = function() {
-	    //	    getSMS('89164896615' , agent.id, order.id);
-	    sendSMSForm.submit();
+	    delay += step;
+	    setTimeout(getSMSFunc, delay);
 	    delay += step;
 	    setTimeout(archivate, delay);
 	    delay += step;
