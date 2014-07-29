@@ -89,6 +89,41 @@ function formatOrder() {
 	callsList = reverseList(callsList.parentNode.parentNode);
 	td.appendChild(callsList);
     };
+    elem = parent.children[0].children[1];
+    var notInteresting = document.createElement('button');
+    notInteresting.textContent = 'Не актуально';
+    notInteresting.style.fontSize = '10px';
+    notInteresting.onclick = function() {
+	alert(order.id + ' Не актуально');
+    };
+    elem.insertBefore(notInterested, elem.children[0]);
+    var transfer = document.createElement('button');
+    transfer.textContent = 'Актуально';
+    transfer.style.fontSIze = '10px';
+    transfer.onclick = function() {
+	alert(order.id + ' Актуально');
+    };
+    var returnInWork = document.createElement('button');
+    returnInWork.textContent = 'Реинкарнация';
+    returnInWork.style.fontSIze = '10px';
+    returnInWork.onclick = function() {
+	alert(order.id + ' Реинкарнация');
+    };
+    elem.insertBefore(returnInWork, elem.children[0]);
+    var notAnswering = document.createElement('button');
+    notAnswering.textContent = 'Не отвечает';
+    notAnswering.style.fontSIze = '10px';
+    notAnswering.onclick = function() {
+	alert(order.id + ' Не отвечает');
+    };
+    elem.insertBefore(notAnswering, elem.children[0]);
+    var veryBusy = document.createElement('button');
+    veryBusy.textContent = 'Очень занят';
+    veryBusy.style.fontSIze = '10px';
+    veryBusy.onclick = function() {
+	alert(order.id + ' Очень занят');
+    };
+    elem.insertBefore(veryBusy, elem.children[0]);
     if (archivateInput) {
 	archivateInput.value = 'Архив';
 	archivateForm.style.display = 'inline-block';
@@ -103,39 +138,8 @@ function formatOrder() {
 	    delay += step;
 	    //	    setTimeout(exit, delay);
 	};
-	elem = parent.children[0].children[1];
 	elem.insertBefore(archivateForm, elem.children[0]);
 	elem.insertBefore(archivateSMSButton, elem.children[0]);
-    };
-    var notInteresting = document.createElement('button');
-    notInteresting.textContent = 'Не актуально';
-    notInteresting.style.fontSize = '10px';
-    notInteresting.onclick = function() {
-	alert(order.id + ' Не актуально');
-    };
-    var transfer = document.createElement('button');
-    transfer.textContent = 'Актуально';
-    transfer.style.fontSIze = '10px';
-    transfer.onclick = function() {
-	alert(order.id + ' Актуально');
-    };
-    var returnInWork = document.createElement('button');
-    returnInWork.textContent = 'Реинкарнация';
-    returnInWork.style.fontSIze = '10px';
-    returnInWork.onclick = function() {
-	alert(order.id + ' Реинкарнация');
-    };
-    var notAnswering = document.createElement('button');
-    notAnswering.textContent = 'Не отвечает';
-    notAnswering.style.fontSIze = '10px';
-    notAnswering.onclick = function() {
-	alert(order.id + ' Не отвечает');
-    };
-    var veryBusy = document.createElement('button');
-    veryBusy.textContent = 'Очень занят';
-    veryBusy.style.fontSIze = '10px';
-    veryBusy.onclick = function() {
-	alert(order.id + ' Очень занят');
     };
     var rows = details.getElementsByTagName('tr');
     for (var i=0, len=rows.length; i<len; i++) {
