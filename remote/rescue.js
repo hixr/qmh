@@ -112,14 +112,14 @@ function formatOrder() {
     elem.insertBefore(returnInWork, elem.children[0]);
     var notAnswering = document.createElement('button');
     notAnswering.textContent = 'Не отвечает';
-    notAnswering.style.fontSIze = '10px';
+    notAnswering.style.fontSize = '10px';
     notAnswering.onclick = function() {
 	alert(order.id + ' Не отвечает');
     };
     elem.insertBefore(notAnswering, elem.children[0]);
     var veryBusy = document.createElement('button');
     veryBusy.textContent = 'Очень занят';
-    veryBusy.style.fontSIze = '10px';
+    veryBusy.style.fontSize = '10px';
     veryBusy.onclick = function() {
 	alert(order.id + ' Очень занят');
     };
