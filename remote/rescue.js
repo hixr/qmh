@@ -92,11 +92,11 @@ function formatOrder() {
 	td.appendChild(callsList);
     };
     elem = parent.children[0].children[1];
-    var notInterested = createStatusButton('Не актуально', 'НЕАК', true);
+    var notInterested = createStatusButton('Не актуально', 'НА', true);
     elem.insertBefore(notInterested, elem.children[0]);
     var transfer = createStatusButton('Актуально', 'АК', false);
     elem.insertBefore(transfer, elem.children[0]);
-    var returnInWork = createStatusButton('Реинкарнация', 'РЕИН', false);
+    var returnInWork = createStatusButton('Реинкарнация', 'РЕ', false);
     elem.insertBefore(returnInWork, elem.children[0]);
     var notAnswering = createStatusButton('Не отвечает', 'НО', true);
     elem.insertBefore(notAnswering, elem.children[0]);
