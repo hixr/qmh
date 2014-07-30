@@ -67,7 +67,12 @@ function formatOrder() {
     agent.id = elem.href.match(/\d+$/)[0];
     order.id = location.href.match(/\d+$/)[0];
     var archivateForm = document.querySelector('[action="/db/index.php?c=orders&m=arhivate"]');
-    function archivate() {archivateForm.submit()};
+    function archivate() {
+	if (!archivateForm) {
+	    return;
+	};
+	archivateForm.submit()
+    };
     var sendSMSForm = document.querySelector('[action="/db/index.php?c=orders&m=writesms"]');
     var submitSMS = function() {
 	sendSMSForm.submit();
