@@ -110,7 +110,7 @@ function formatOrder() {
     var schedule = createStatusButton('Отложить', 'ОТ', false);
     elem.insertBefore(schedule, elem.children[0]);
     if (archivateInput) {
-	archivateInput.value = 'Архив';
+	archivateInput.value = 'А';
 	archivateForm.style.display = 'inline-block';
 	var archivateSMSButton= document.createElement('button') ;
 	archivateSMSButton.textContent = 'Архив+SMS';
@@ -127,7 +127,7 @@ function formatOrder() {
 	    setTimeout(exit, delay);
 	};
 	elem.insertBefore(archivateForm, elem.children[0]);
-	elem.insertBefore(archivateSMSButton, elem.children[0]);
+	//elem.insertBefore(archivateSMSButton, elem.children[0]);
     };
     var rows = details.getElementsByTagName('tr');
     for (var i=0, len=rows.length; i<len; i++) {
