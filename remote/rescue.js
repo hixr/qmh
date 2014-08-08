@@ -58,6 +58,7 @@ function formatOrder() {
 	    setTimeout(exit, 10*loadDelay);
 	};
     }, loadDelay);
+    var bgdiv = document.querySelector('div.redbg, div.greenbg');
     var abuseLink = document.querySelector('td>a[href^="javascript:getAbuse("]');
     hide(abuseLink);
     var contactsCell = abuseLink.parentNode;
@@ -99,10 +100,13 @@ function formatOrder() {
     elem = parent.children[0].children[1];
     var notInterested = createStatusButton('Не актуально', 'УК', true);
     elem.insertBefore(notInterested, elem.children[0]);
-    var transfer = createStatusButton('Актуально', 'АК', false);
-    elem.insertBefore(transfer, elem.children[0]);
-    var returnInWork = createStatusButton('Реинкарнация', 'РЕ', false);
-    elem.insertBefore(returnInWork, elem.children[0]);
+    if (bgdiv) {
+	var returnInWork = createStatusButton('Реинкарнация', 'РЕ', false);
+	elem.insertBefore(returnInWork, elem.children[0]);
+    } else {
+	var transfer = createStatusButton('Актуально', 'АК', false);
+	elem.insertBefore(transfer, elem.children[0]);
+    };	
     var notAnswering = createStatusButton('Не отвечает', 'НД', true);
     elem.insertBefore(notAnswering, elem.children[0]);
     var veryBusy = createStatusButton('Очень занят', 'ОЗ', true);
