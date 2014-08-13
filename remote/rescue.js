@@ -141,7 +141,7 @@ function formatOrder() {
 	if (name == 'Заявка создана:') {
 	    parent.insertBefore(elem, parent.children[0]);
 	    var createdDate = strToDate(content.textContent);
-	    if (createdDate > getDayBefore(5)) {
+	    if (createdDate > getDayBefore(5) && !bgdiv) {
 		content.style.backgroundColor = 'lavenderBlush';
 		document.body.style.backgroundColor = 'honeyDew';
 		setTimeout(exit, 10*loadDelay);
