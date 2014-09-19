@@ -1,4 +1,4 @@
-document.body.style.backgroundColor = 'linen';
+﻿document.body.style.backgroundColor = 'linen';
 var agent = {};
 var order = {};
 if (/index\.php\?c=orders&m=l&st=unassigned&budget=0&fcity=0&ftime=2&q=50/.test(window.location.href)) {
@@ -127,7 +127,7 @@ function formatOrder() {
 	    setTimeout(submitSMS, delay);
 	    delay += step;
 	    setTimeout(archivate, delay);
-	    delay += step;
+	    delay += 10*step;
 	    setTimeout(exit, delay);
 	};
 	elem.insertBefore(archivateForm, elem.children[0]);
@@ -163,7 +163,7 @@ function formatOrder() {
 	    };
 	    delay += step;
 	    setTimeout(archivate, delay);
-	    delay += step;
+	    delay += 10*step;
 	    setTimeout(exit, delay);
 	    prompt('Статус:', order.id + ' ' + description);
 	};
