@@ -18,7 +18,7 @@ function exit() {
     window.close()
 };
 function formatOrder() {
-    var step = 200;
+    var step = 100;
     var delay = 0;
     var loadDelay = 3000;
     var onsite = document.querySelector('[style="width:250px;height:44px; display:block; background:url(../../images/b_onsite.jpg); float:right; margin-right:150px;"]');
