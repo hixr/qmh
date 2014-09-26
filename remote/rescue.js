@@ -127,8 +127,7 @@ function formatOrder() {
 	    setTimeout(submitSMS, delay);
 	    delay += step;
 	    setTimeout(archivate, delay);
-	    delay += 3*step;
-	    setTimeout(exit, delay);
+	    setTimeout(exit, loadDelay);
 	};
 	elem.insertBefore(archivateForm, elem.children[0]);
 	//elem.insertBefore(archivateSMSButton, elem.children[0]);
@@ -163,8 +162,7 @@ function formatOrder() {
 	    };
 	    delay += step;
 	    setTimeout(archivate, delay);
-	    delay += 3*step;
-	    setTimeout(exit, delay);
+	    setTimeout(exit, loadDelay);
 	    prompt('Статус:', order.id + ' ' + description);
 	};
 	return button;
